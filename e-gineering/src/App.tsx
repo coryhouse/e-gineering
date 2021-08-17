@@ -20,7 +20,8 @@ export function App() {
       setFoods(json);
     }
     callGetFoods();
-  });
+    // Using empty array for useEffect since we only want this to run once.
+  }, []);
 
   return (
     <>
