@@ -1,7 +1,3 @@
-// Ale emporium - Hermanaki Sauce.
-// BottleWorks
-// Ma ma Korean BBQ
-
 import React from "react";
 
 type Food = {
@@ -30,6 +26,7 @@ export function App() {
           </tr>
         </thead>
         <tbody>
+          x
           {foods.map((food) => (
             <tr key={food.name}>
               <td>{food.name}</td>
