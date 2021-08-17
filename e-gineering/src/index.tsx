@@ -6,4 +6,5 @@ import { App } from "./App";
 // for                              htmlFor
 // inline styles are strings        Inline styles are objects, Numbers = px.
 // <!-- comments like this -->      {/* comments like this */}
+// attributes are kebab-cased       props are camelCased
 render(<App />, document.getElementById("root"));
