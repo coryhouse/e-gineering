@@ -7,5 +7,5 @@ export async function deleteFood(id: number) {
     method: "DELETE",
   });
   if (!response.ok) throw new Error("Delete failed");
-  return await response.json();
+  return response.json();
 }
