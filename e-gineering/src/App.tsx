@@ -22,14 +22,16 @@ export function App() {
       <h1>Pantry Manager</h1>
       <table>
         <thead>
-          <th>Name</th>
-          <th>Quantity</th>
-          <th>Min Quantity</th>
-          <th>Type</th>
+          <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Min Quantity</th>
+            <th>Type</th>
+          </tr>
         </thead>
         <tbody>
           {foods.map((food) => (
-            <tr>
+            <tr key={food.name}>
               <td>{food.name}</td>
               <td>{food.quantity}</td>
               <td>{food.minQuantity}</td>
