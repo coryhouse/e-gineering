@@ -1,4 +1,5 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { getFoods } from "./api/foodsApi";
 
 type Food = {
   name: string;
@@ -7,12 +8,20 @@ type Food = {
   type: string;
 };
 
-const foods: Food[] = [
-  { name: "Carrot", quantity: 1, minQuantity: 5, type: "Veggie" },
-  { name: "Potato", quantity: 2, minQuantity: 3, type: "Veggie" },
-];
-
 export function App() {
+  const [foods, setFoods] = useState<Food[]>([]);
+
+  useEffect(() => {
+    async function callGetFoods() {
+      const response = await getFoods();
+      debugger;
+      if (!response.ok) throw new Error("Call to get foods failed");
+      const json: Food[] = await response.json();
+      setFoods(json);
+    }
+    callGetFoods();
+  });
+
   return (
     <>
       <h1>Pantry Manager</h1>

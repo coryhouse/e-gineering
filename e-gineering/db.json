@@ -1,0 +1,18 @@
+{
+  "foods": [
+    {
+      "id": 1,
+      "name": "Carrot",
+      "quantity": 1,
+      "minQuantity": 5,
+      "type": "Veggie"
+    },
+    {
+      "id": 2,
+      "name": "Potato",
+      "quantity": 2,
+      "minQuantity": 3,
+      "type": "Veggie"
+    }
+  ]
+}
