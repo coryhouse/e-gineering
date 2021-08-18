@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getFoods, deleteFood } from "./api/foodsApi";
 import { Input } from "./shared/Input";
 import { Select } from "./shared/Select";
@@ -44,6 +44,17 @@ export function App() {
     // Using empty array for useEffect since we only want this to run once.
   }, []);
 
+  // Implementing single onChange handler by convention.
+  // id coorellates to the property in state.
+  function onChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const { value, id } = event.target;
+    // Create a copy of existing state, but change the name property to the new value
+    setNewFood({
+      ...newFood,
+      [id]: value,
+    });
+  }
+
   return (
     <>
       <h1>Pantry Manager</h1>
@@ -56,13 +67,20 @@ export function App() {
       */}
 
       <form>
-        <Input id="name" label="Name" value={newFood.name} />
         <Input
+          onChange={onChange}
+          id="name"
+          label="Name"
+          value={newFood.name}
+        />
+        <Input
+          onChange={onChange}
           id="quantity"
           label="Quantity"
           value={newFood.quantity.toString()}
         />
         <Input
+          onChange={onChange}
           id="min-quantity"
           label="Min Quantity"
           value={newFood.minQuantity.toString()}
