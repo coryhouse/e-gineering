@@ -3,6 +3,7 @@ import { App } from "./App";
 import { BrowserRouter, Route } from "react-router-dom";
 import { About } from "./About";
 import { Nav } from "./Nav";
+import { FoodForm } from "./FoodForm";
 
 // HTML                         vs  JSX
 // class                            className
@@ -15,6 +16,9 @@ render(
     <Nav />
     <Route path="/about">
       <About />
+    </Route>
+    <Route path="/food">
+      <FoodForm />
     </Route>
     <Route path="/" exact>
       <App />
