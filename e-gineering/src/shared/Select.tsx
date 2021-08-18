@@ -8,14 +8,20 @@ type SelectProps = {
   label: string;
   options: SelectOption[];
   placeholderOption: string;
+  value: string;
 };
 
-export function Select(props: SelectProps) {
+// Destructuring props within the method signature to avoid repeating the word props.
+export function Select({ placeholderOption, value, options }: SelectProps) {
   return (
     <select>
-      <option value="">{props.placeholderOption}</option>
-      {props.options.map((option) => (
-        <option key={option.value} value={option.value}>
+      <option value="">{placeholderOption}</option>
+      {options.map((option) => (
+        <option
+          selected={value === option.value}
+          key={option.value}
+          value={option.value}
+        >
           {option.label}
         </option>
       ))}

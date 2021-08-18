@@ -1,8 +1,7 @@
-import React from "react";
-
 type InputProps = {
   label: string;
   id: string;
+  value: string;
 };
 
 export function Input(props: InputProps) {
@@ -10,7 +9,7 @@ export function Input(props: InputProps) {
     <div>
       <label htmlFor={props.id}>{props.label}</label>
       <br />
-      <input id={props.id} type="text" />
+      <input id={props.id} type="text" value={props.value} />
     </div>
   );
 }

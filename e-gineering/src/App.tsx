@@ -11,8 +11,23 @@ export type Food = {
   type: string;
 };
 
+export type NewFood = {
+  name: string;
+  quantity: number;
+  minQuantity: number;
+  type: string;
+};
+
+const emptyFood: NewFood = {
+  name: "",
+  quantity: 0,
+  minQuantity: 0,
+  type: "",
+};
+
 export function App() {
   const [foods, setFoods] = useState<Food[]>([]);
+  const [newFood, setNewFood] = useState<NewFood>(emptyFood);
 
   // Long form of the above that avoids using array destructuring.
   // const foodStateArray = useState<Food[]>([]);
@@ -41,13 +56,22 @@ export function App() {
       */}
 
       <form>
-        <Input id="name" label="Name" />
-        <Input id="quantity" label="Quantity" />
-        <Input id="min-quantity" label="Min Quantity" />
+        <Input id="name" label="Name" value={newFood.name} />
+        <Input
+          id="quantity"
+          label="Quantity"
+          value={newFood.quantity.toString()}
+        />
+        <Input
+          id="min-quantity"
+          label="Min Quantity"
+          value={newFood.minQuantity.toString()}
+        />
         <Select
           id="type"
           label="Type"
           placeholderOption="Select Type"
+          value={newFood.type}
           options={[
             { label: "Vegetable", value: "Vegetable" },
             { label: "Grain", value: "Grain" },
