@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { getFoods, deleteFood } from "./api/foodsApi";
+import { Input } from "./shared/Input";
+import { Select } from "./shared/Select";
 
 export type Food = {
   id: number;
@@ -11,6 +13,11 @@ export type Food = {
 
 export function App() {
   const [foods, setFoods] = useState<Food[]>([]);
+
+  // Long form of the above that avoids using array destructuring.
+  // const foodStateArray = useState<Food[]>([]);
+  // const foods = foodStateArray[0];
+  // const setFoods = foodStateArray[1];
 
   useEffect(() => {
     async function callGetFoods() {
@@ -25,6 +32,30 @@ export function App() {
   return (
     <>
       <h1>Pantry Manager</h1>
+
+      {/* Exercise 1: Create a reusable Select and consume it below for Food Type 
+
+        1. Vegetable
+        2. Grain
+        3. Fruit
+      */}
+
+      <form>
+        <Input id="name" label="Name" />
+        <Input id="quantity" label="Quantity" />
+        <Input id="min-quantity" label="Min Quantity" />
+        <Select
+          id="type"
+          label="Type"
+          placeholderOption="Select Type"
+          options={[
+            { label: "Vegetable", value: "Vegetable" },
+            { label: "Grain", value: "Grain" },
+            { label: "Fruit", value: "Fruit" },
+          ]}
+        />
+      </form>
+
       <table>
         <thead>
           <tr>
