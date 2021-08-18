@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { getFoods, deleteFood } from "./api/foodsApi";
+import { getFoods, deleteFood, addFood } from "./api/foodsApi";
 import { Input } from "./shared/Input";
 import { Select } from "./shared/Select";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export type Food = {
   id: number;
@@ -57,8 +59,25 @@ export function App() {
     });
   }
 
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    // Exercise 2: Save the form data.
+    // Url: http://localhost:3001/foods
+    // Verb: POST
+    event.preventDefault();
+
+    try {
+      const addedFood = await addFood(newFood);
+      setFoods([...foods, addedFood]);
+      setNewFood(emptyFood);
+      toast.success("Food saved! 🦄");
+    } catch (error) {
+      toast.error("Failed to add");
+    }
+  }
+
   return (
     <>
+      <ToastContainer />
       <h1>Pantry Manager</h1>
 
       {/* Exercise 1: Create a reusable Select and consume it below for Food Type 
@@ -68,7 +87,7 @@ export function App() {
         3. Fruit
       */}
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input
           onChange={onChange}
           id="name"
