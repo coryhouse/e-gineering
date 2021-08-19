@@ -1,4 +1,4 @@
-import { Food } from "../App";
+import { Food } from "../Home";
 import { NewFood } from "../FoodForm";
 
 const baseUrl = process.env.REACT_APP_BASE_URL;
