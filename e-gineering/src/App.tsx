@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getFoods, deleteFood } from "./api/foodsApi";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 
 export type Food = {
   id: number;
@@ -34,12 +35,9 @@ export function App() {
       <ToastContainer />
       <h1>Pantry Manager</h1>
 
-      {/* Exercise 1: Create a reusable Select and consume it below for Food Type 
-
-        1. Vegetable
-        2. Grain
-        3. Fruit
-      */}
+      <Link className="btn btn-secondary" to="/food">
+        Add Food
+      </Link>
 
       <table>
         <thead>
@@ -66,7 +64,10 @@ export function App() {
                   Delete
                 </button>
               </td>
-              <td>{food.name}</td>
+              {/* Exercise 3: Link to the edit page for each food */}
+              <td>
+                <Link to={"/food/" + food.id}>{food.name}</Link>
+              </td>
               <td>{food.quantity}</td>
               <td>{food.minQuantity}</td>
               <td>{food.type}</td>
