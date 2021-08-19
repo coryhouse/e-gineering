@@ -41,6 +41,7 @@ export function Home() {
 
       {foods.length ? (
         <table>
+          <caption>Pantry Foods</caption>
           <thead>
             <tr>
               <th></th>
@@ -55,6 +56,7 @@ export function Home() {
               <tr key={food.name}>
                 <td>
                   <button
+                    aria-label={"Delete " + food.name}
                     onClick={async () => {
                       await deleteFood(food.id);
                       // Return a new array with the id that was just deleted omitted.
