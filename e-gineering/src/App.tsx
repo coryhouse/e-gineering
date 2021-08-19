@@ -39,49 +39,53 @@ export function App() {
         Add Food
       </Link>
 
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Min Quantity</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {foods.map((food) => (
-            <tr key={food.name}>
-              <td>
-                <button
-                  onClick={async () => {
-                    await deleteFood(food.id);
-                    // Return a new array with the id that was just deleted omitted.
-                    const newFoods = foods.filter((f) => f.id !== food.id);
-                    setFoods(newFoods);
-                  }}
-                >
-                  Delete
-                </button>
-              </td>
-              <td>
-                <Link to={"/food/" + food.id}>{food.name}</Link>
-              </td>
-              <td
-                style={
-                  food.minQuantity > food.quantity
-                    ? { color: "red", fontWeight: "bold" }
-                    : {}
-                }
-              >
-                {food.quantity}
-              </td>
-              <td>{food.minQuantity}</td>
-              <td>{food.type}</td>
+      {foods.length ? (
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Min Quantity</th>
+              <th>Type</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {foods.map((food) => (
+              <tr key={food.name}>
+                <td>
+                  <button
+                    onClick={async () => {
+                      await deleteFood(food.id);
+                      // Return a new array with the id that was just deleted omitted.
+                      const newFoods = foods.filter((f) => f.id !== food.id);
+                      setFoods(newFoods);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </td>
+                <td>
+                  <Link to={"/food/" + food.id}>{food.name}</Link>
+                </td>
+                <td
+                  style={
+                    food.minQuantity > food.quantity
+                      ? { color: "red", fontWeight: "bold" }
+                      : {}
+                  }
+                >
+                  {food.quantity}
+                </td>
+                <td>{food.minQuantity}</td>
+                <td>{food.type}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>Uh oh! No foods! :(</p>
+      )}
     </>
   );
 }
