@@ -5,14 +5,14 @@
       "name": "Carrot",
       "quantity": 1,
       "minQuantity": 5,
-      "type": "Veggie"
+      "type": "Vegetable"
     },
     {
       "id": 2,
       "name": "Potato",
       "quantity": 2,
       "minQuantity": 3,
-      "type": "Veggie"
+      "type": "Vegetable"
     }
   ]
 }
