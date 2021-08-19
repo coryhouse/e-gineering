@@ -64,11 +64,18 @@ export function App() {
                   Delete
                 </button>
               </td>
-              {/* Exercise 3: Link to the edit page for each food */}
               <td>
                 <Link to={"/food/" + food.id}>{food.name}</Link>
               </td>
-              <td>{food.quantity}</td>
+              <td
+                style={
+                  food.minQuantity > food.quantity
+                    ? { color: "red", fontWeight: "bold" }
+                    : {}
+                }
+              >
+                {food.quantity}
+              </td>
               <td>{food.minQuantity}</td>
               <td>{food.type}</td>
             </tr>
