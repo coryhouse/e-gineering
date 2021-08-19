@@ -34,3 +34,15 @@ export async function addFood(food: NewFood) {
   if (!response.ok) throw new Error("Call to add foods failed");
   return response.json() as Promise<Food>;
 }
+
+export async function editFood(food: Food) {
+  const response = await fetch(baseUrl + "foods/" + food.id, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(food),
+  });
+  if (!response.ok) throw new Error("Call to edit foods failed");
+  return response.json() as Promise<Food>;
+}
