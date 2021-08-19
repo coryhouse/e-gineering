@@ -11,6 +11,7 @@ import { FoodForm } from "./FoodForm";
 // inline styles are strings        Inline styles are objects, Numbers = px.
 // <!-- comments like this -->      {/* comments like this */}
 // attributes are kebab-cased       props are camelCased
+// options accept selected          select accepts value
 render(
   <BrowserRouter>
     <Nav />
