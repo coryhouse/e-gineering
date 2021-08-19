@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import { addFood, getFood } from "./api/foodsApi";
+import { addFood, editFood, getFood } from "./api/foodsApi";
 import { Input } from "./shared/Input";
 import { Select } from "./shared/Select";
 import { useHistory, useParams } from "react-router-dom";
@@ -36,7 +36,7 @@ export function FoodForm() {
     event.preventDefault();
 
     try {
-      await addFood(food);
+      foodId ? await editFood({ ...food, id: foodId }) : await addFood(food);
       toast.success("Food saved! 🦄");
       history.push("/"); // Redirect to home.
     } catch (error) {
