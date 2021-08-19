@@ -21,3 +21,9 @@ export function Input({
     </div>
   );
 }
+
+// Alternative defaultProps approach
+// I prefer using default args in destructured method signature
+// Input.defaultProps = {
+//   type: "number",
+// };
